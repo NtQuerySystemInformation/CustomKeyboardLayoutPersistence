@@ -24,7 +24,7 @@ The dropper requires VS2022 for compilation and the keyboard driver VS2019 becau
   (2023 Update: Hey it's kasua, it's been a while since I have looked at my past work, but this one definetely has some terminology errors.
   The paper mentions KLID as "a 8-digit number (DWORD), where the LOWORD is the language ID (or LANGID) and the HIWORD is the sublanguage ID for a specific keyboard layout." 
   This is actually not correct. The bottom half is LANGID and the top half is something device-specific.
-  The rest however, stays intact.)
+  The rest however, stays intact, since the main objective of this project is to show how it is doable to achieve code execution.)
   
 # Dependencies:
    Requires Microsoft Visual C++ Redistributable (Visual Studio 2015, 2017, 2019 y 2022)
