@@ -17,12 +17,18 @@ The dropper requires VS2022 for compilation and the keyboard driver VS2019 becau
     
    Once the infected user logs in, you should see a cmd.exe process that is NTAUTHORITY/SYSTEM.
    
-# Warnings:
+# Warnings and Errata:
   It is recommended to run the binary in a VM, since there is no code related to the desinstallation process in the PoC.
-  For more details refer to the paper.
+  For more details, refer to the paper.
+  
+  (2023 Update: Hey it's kasua, it's been a while since I have looked at my past work, but this one definetely has some terminology errors.
+  The paper mentions KLID as "a 8-digit number (DWORD), where the LOWORD is the language ID (or LANGID) and the HIWORD is the sublanguage ID for a specific keyboard layout." 
+  This is actually not correct. The bottom half is LANGID and the top half is something device-specific.
+  The rest however, stays intact.)
   
 # Dependencies:
    Requires Microsoft Visual C++ Redistributable (Visual Studio 2015, 2017, 2019 y 2022)
+   (Now the library code is statically linked, so this shouldn't be a problem, unless?.)
 
 Dedicated to all vx-underground members.
 
